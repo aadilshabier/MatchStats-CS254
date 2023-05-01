@@ -39,6 +39,7 @@ class Player(models.Model):
     assists = models.PositiveSmallIntegerField(default=0)
     yellow_cards = models.PositiveSmallIntegerField(default=0)
     red_cards = models.PositiveSmallIntegerField(default=0)
+    nationality = models.CharField(max_length=64)
 
     def __str__(self):
         return self.name
