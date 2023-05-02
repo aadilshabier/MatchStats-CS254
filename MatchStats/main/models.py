@@ -40,6 +40,7 @@ class Player(models.Model):
     yellow_cards = models.PositiveSmallIntegerField(default=0)
     red_cards = models.PositiveSmallIntegerField(default=0)
     nationality = models.CharField(max_length=64)
+    height = models.PositiveSmallIntegerField()
 
     def __str__(self):
         return self.name
@@ -81,5 +82,5 @@ class Goal(models.Model):
     match = models.ForeignKey(Match, on_delete=models.CASCADE)
     team = models.ForeignKey(Team, null=True, on_delete = models.SET_NULL)
     scorer = models.ForeignKey(Player, null=True, related_name="goal_set", on_delete=models.SET_NULL)
-    assist = models.ForeignKey(Player, null=True, related_name="assist_set",blank=True, on_delete=models.SET_NULL)
+    assister = models.ForeignKey(Player, null=True, related_name="assist_set",blank=True, on_delete=models.SET_NULL)
     match_time = models.DateTimeField()
