@@ -14,9 +14,12 @@ class Team(models.Model):
     name = models.CharField(max_length=128, unique=True)
     code = models.CharField(max_length=3, unique=True)
     stadium = models.ForeignKey(Stadium, on_delete=models.SET_NULL, null=True, blank=True)
-    goals_scored = models.PositiveSmallIntegerField()
-    goals_conceded = models.PositiveSmallIntegerField()
-    points = models.SmallIntegerField()
+    wins = models.PositiveSmallIntegerField(default=0)
+    draws = models.PositiveSmallIntegerField(default=0)
+    losses = models.PositiveSmallIntegerField(default=0)
+    goals_scored = models.PositiveSmallIntegerField(default=0)
+    goals_conceded = models.PositiveSmallIntegerField(default=0)
+    points = models.SmallIntegerField(default=0)
 
     def __str__(self):
         return self.name
