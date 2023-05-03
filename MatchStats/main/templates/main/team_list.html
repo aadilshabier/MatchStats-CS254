@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+
+{% block title%}Teams{% endblock %}
+
+{% block content%}
+<h1>Teams ordered by points:</h1>
+<ul>
+{% for team in teams %}
+<li>{{ team.name }} - {{ team.points }}</li>
+{% endfor %}
+</ul>
+{% endblock %}
