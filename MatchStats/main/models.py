@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, MaxLengthValidator
 
 class Stadium(models.Model):
     name = models.CharField(max_length=128, unique=True)
@@ -64,6 +64,9 @@ class Match(models.Model):
     stadium = models.ForeignKey(Stadium, null=True, on_delete=models.SET_NULL)
     viewer_count = models.PositiveIntegerField(null=True, blank=True)
 
+    def __str__(self):
+        return self.team_1.code + " vs " + self.team_2.code
+
 class Transfer(models.Model):
     team_from = models.ForeignKey(Team, null=True, related_name="team_from", blank=True, on_delete=models.SET_NULL)
     team_to = models.ForeignKey(Team, null=True, related_name="team_to", blank=True, on_delete=models.SET_NULL)
@@ -86,4 +89,4 @@ class Goal(models.Model):
     team = models.ForeignKey(Team, null=True, on_delete = models.SET_NULL)
     scorer = models.ForeignKey(Player, null=True, related_name="goal_set", on_delete=models.SET_NULL)
     assister = models.ForeignKey(Player, null=True, related_name="assist_set",blank=True, on_delete=models.SET_NULL)
-    match_time = models.DateTimeField()
+    match_time = models.PositiveSmallIntegerField(validators=[MaxLengthValidator(120)])
