@@ -5,7 +5,7 @@ from django.views import generic
 from .models import Stadium, Player, Team, Match
 
 def index(request):
-    return HttpResponse(b"MatchStats app")
+    return render(request, "main/index.html")
 
 class TeamsList(generic.ListView):
     model = Team
