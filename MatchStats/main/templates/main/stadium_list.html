@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+
+{% block title%}Stadiums{% endblock %}
+
+{% block content%}
+<h3>Table:</h3>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">City</th>
+        <th scope="col">Capacity</th>
+        <th scope="col">Address</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for stadium in stadiums %}
+    <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ stadium.name }}</td>
+        <td>{{ stadium.city }}</td>
+        <td>{{ stadium.capacity }}</td>
+        <td>{{ stadium.address }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

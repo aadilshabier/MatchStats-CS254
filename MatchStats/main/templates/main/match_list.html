@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+
+{% block title%}Teams{% endblock %}
+
+{% block content%}
+<h3>Table:</h3>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Home</th>
+        <th scope="col"></th>
+        <th scope="col">vs</th>
+        <th scope="col"></th>
+        <th scope="col">Away</th>
+        <th scope="col">Date</th>
+        <th scope="col">Stadium</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for match in matches %}
+    <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ match.team_1 }}</td>
+        <td>{{ match.score_1 }}</td>
+        <td></td>
+        <td>{{ match.score_2 }}</td>
+        <td>{{ match.team_2 }}</td>
+        <td>{{ match.match_time }}</td>
+        <td>{{ match.stadium }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

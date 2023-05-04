@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import MinValueValidator, MaxLengthValidator
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Stadium(models.Model):
     name = models.CharField(max_length=128, unique=True)
@@ -90,4 +90,4 @@ class Goal(models.Model):
     team = models.ForeignKey(Team, null=True, on_delete = models.SET_NULL)
     scorer = models.ForeignKey(Player, null=True, related_name="goal_set", on_delete=models.SET_NULL)
     assister = models.ForeignKey(Player, null=True, related_name="assist_set",blank=True, on_delete=models.SET_NULL)
-    match_time = models.PositiveSmallIntegerField(validators=[MaxLengthValidator(120)])
+    match_time = models.PositiveSmallIntegerField(validators=[MaxValueValidator(120)])

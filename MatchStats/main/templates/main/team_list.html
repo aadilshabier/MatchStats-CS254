@@ -3,10 +3,39 @@
 {% block title%}Teams{% endblock %}
 
 {% block content%}
-<h1>Teams ordered by points:</h1>
-<ul>
-{% for team in teams %}
-<li>{{ team.name }} - {{ team.points }}</li>
-{% endfor %}
-</ul>
+<h3>Table:</h3>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Club</th>
+        <th scope="col">MP</th>
+        <th scope="col">W</th>
+        <th scope="col">D</th>
+        <th scope="col">L</th>
+        <th scope="col">GF</th>
+        <th scope="col">GA</th>
+        <th scope="col">GD</th>
+        <th scope="col">Pts</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for team in teams %}
+    <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ team.name }}</td>
+        <td>{{ team.played }}</td>
+        <td>{{ team.wins }}</td>
+        <td>{{ team.draws }}</td>
+        <td>{{ team.losses }}</td>
+        <td>{{ team.goals_for }}</td>
+        <td>{{ team.goals_against }}</td>
+        <td>{{ team.goals_against }}</td>
+        <!-- <td>{%{ team.goals_for - team.goals_against }}</td> -->
+        <td>{{ team.points }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
 {% endblock %}

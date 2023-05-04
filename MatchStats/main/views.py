@@ -20,11 +20,13 @@ class TeamDetail(generic.DetailView):
 class StadiumList(generic.ListView):
     model = Stadium
     template_name = 'main/stadium_list.html'
+    context_object_name = "stadiums"
 
 class MatchList(generic.ListView):
     model = Match
     template_name = 'main/match_list.html'
-
+    context_object_name = "matches"
+    ordering = ["match_time"]
 
 class MatchDetail(generic.DetailView):
     model = Match
