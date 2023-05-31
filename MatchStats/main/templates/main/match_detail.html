@@ -1,15 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Match Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        /* Custom styles go here */
+        /* Example: */
+        .table-responsive {
+            margin-top: 1rem;
+        }
+    </style>
 </head>
 <body>
-    <h1>Match Details</h1>
-
-    <h2>{{ match.team1.name }} vs {{ match.team2.name }}</h2>
-    <p>Date: {{ match.date }}</p>
-    <p>Stadium: {{ match.stadium.name }}</p>
-    <!-- Add more match details as needed -->
+    <div class="container">
+        <h1>Match Details</h1>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Team 1</th>
+                        <th>Team 2</th>
+                        <th>Score 1</th>
+                        <th>Score 2</th>
+                        <th>Shots 1</th>
+                        <th>Shots 2</th>
+                        <th>Offsides 1</th>
+                        <th>Offsides 2</th>
+                        <th>Corners 1</th>
+                        <th>Corners 2</th>
+                        <th>Match Time</th>
+                        <th>Completed</th>
+                        <th>Stadium</th>
+                        <th>Viewer Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for match in matches %}
+                    <tr>
+                        <td>{{ match.team_1 }}</td>
+                        <td>{{ match.team_2 }}</td>
+                        <td>{{ match.score_1 }}</td>
+                        <td>{{ match.score_2 }}</td>
+                        <td>{{ match.shots_1 }}</td>
+                        <td>{{ match.shots_2 }}</td>
+                        <td>{{ match.offsides_1 }}</td>
+                        <td>{{ match.offsides_2 }}</td>
+                        <td>{{ match.corners_1 }}</td>
+                        <td>{{ match.corners_2 }}</td>
+                        <td>{{ match.match_time }}</td>
+                        <td>{{ match.completed }}</td>
+                        <td>{{ match.stadium }}</td>
+                        <td>{{ match.viewer_count }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 
