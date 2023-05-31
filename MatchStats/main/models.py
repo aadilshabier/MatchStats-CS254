@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.contrib.auth.models import User
 
 class Stadium(models.Model):
     name = models.CharField(max_length=128, unique=True)
@@ -75,15 +76,15 @@ class Transfer(models.Model):
     price = models.FloatField(validators=[MinValueValidator(0.0)])
     transfer_date = models.DateField()
 
-# class SupportStaff(models.Model):
-#     STAFF_JOB_LIST = [
-#         ('mgr', 'Manager'),
-#         ('ch', 'Coach')
-#     ]
-#     staff_id = models.IntegerField(primary_key=True)
-#     name = models.CharField(max_length=30)
-#     type = models.CharField(choices=STAFF_JOB_LIST, max_length=20)
-#     team_id = models.ForeignKey(Teams, to_field='team_id', on_delete=models.CASCADE)
+class Staff(models.Model):
+    STAFF_JOB_LIST = [
+        ('tstaff', 'Tournament Staff'),
+        ('mgr', 'Manager'),
+        ('staff', 'Staff')
+    ]
+    user_id = models.OneToOneField(User, on_delete=models.CASCADE)
+    type = models.CharField(choices=STAFF_JOB_LIST, max_length=20)
+    team_id = models.ForeignKey(Team, null=True, blank=True, on_delete=models.SET_NULL)
 
 class Goal(models.Model):
     match = models.ForeignKey(Match, on_delete=models.CASCADE)
