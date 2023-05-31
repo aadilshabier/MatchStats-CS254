@@ -76,13 +76,13 @@
         <div class="row">
             {% for match in matches %}
             <div class="col-md-6">
-              <a href="{% url 'main:match_detail' match.id %}" class="match-link">
+              <a href="match/{{match.id}}" class="match-link">
                 <div class="match-card">
                   <div class="team-names">
                     {{ match.team_1 }} vs {{ match.team_2 }}
                   </div>
                   <div class="match-details">
-                    <span>Match Time: {{ match.match_time }}</span>
+                    <span>{{ match.match_time }}</span>
                     <span class="{% if match.completed %}completed{% else %}not-completed{% endif %}">
                       {% if match.completed %}Completed{% else %}Not Completed{% endif %}
                     </span>

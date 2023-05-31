@@ -1,44 +1,100 @@
 {% extends 'main/base.html' %}
 
-{% block title%}Teams{% endblock %}
+{% block title %}Teams{% endblock %}
 
-{% block content%}
+{% block content %}
 <style>
-   .change_color:hover{
-        background-color: rgb(39, 141, 48);
+  body {
+        background-color: #b1cdea;
+        overflow: visible;
+        
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+    }
+    h1 {
+        font-size: 4rem;
+        color: #0a0244;
+        margin-bottom: 30px;
+        padding: 10px;
+        display: inline-block;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        border-radius: 10px;
+        text-transform: uppercase;
+        letter-spacing: 20px;
+        text-align: center;
+    }
+
+    .card {
+        background-color: #f2f6fa;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 20px;
+        margin: 10px;
+        text-align: center;
+        transition: background-color 0.2s ease-in-out;
+    }
+
+    .card:hover {
+        background-color: #dbe8ff;
+    }
+
+    .club-link {
+        text-decoration: none;
+        color: #080049;
+        font-weight: bold;
+    }
+
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 </style>
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Club</th>
-        <th scope="col">MP</th>
-        <th scope="col">W</th>
-        <th scope="col">D</th>
-        <th scope="col">L</th>
-        <th scope="col">GF</th>
-        <th scope="col">GA</th>
-        <th scope="col">GD</th>
-        <th scope="col">Pts</th>
-      </tr>
-    </thead>
-    <tbody>
+
+<div class="container">
+  <h1>TEAMS</h1>
+  <div class="card-container">
     {% for team in teams %}
-    <tr>
-        <th scope="row">{{ forloop.counter }}</th>
-        <td><a class="change_color" href="{% url 'main:team_detail' team.id %}"  style="text-decoration: none; color: rgb(8, 8, 8);" >{{ team.name }}</a></td>
-        <td>{{ team.played }}</td>
-        <td>{{ team.wins }}</td>
-        <td>{{ team.draws }}</td>
-        <td>{{ team.losses }}</td>
-        <td>{{ team.goals_for }}</td>
-        <td>{{ team.goals_against }}</td>
-        <td>{{ team.goals_against }}</td>
-        <!-- <td>{%{ team.goals_for - team.goals_against }}</td> -->
-        <td>{{ team.points }}</td>
-    </tr>
+    <div class="card">
+        <h3 class="club-name">
+            <a class="club-link" href="{% url 'main:team_detail' team.id %}">
+                {{ team.name }}
+            </a>
+        </h3>
+        <table class="table">
+            <thead>
+              <!-- <tr>
+                <th scope="col">MP</th>
+                <th scope="col">W</th>
+                <th scope="col">D</th>
+                <th scope="col">L</th>
+                <th scope="col">GF</th>
+                <th scope="col">GA</th>
+                <th scope="col">GD</th>
+                <th scope="col">Pts</th>
+              </tr> -->
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <td>{{ team.played }}</td>
+                    <td>{{ team.wins }}</td>
+                    <td>{{ team.draws }}</td>
+                    <td>{{ team.losses }}</td>
+                    <td>{{ team.goals_for }}</td>
+                    <td>{{ team.goals_against }}</td>
+                    <td>{{ team.goals_against }}</td>
+                    <td>{{ team.points }}</td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
     {% endfor %}
-  </tbody>
-</table>
+  </div>
+</div>
+
 {% endblock %}
