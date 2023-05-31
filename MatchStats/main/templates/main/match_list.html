@@ -82,7 +82,7 @@
                     {{ match.team_1 }} vs {{ match.team_2 }}
                   </div>
                   <div class="match-details">
-                    <span>Match Time: {{ match.match_time }}</span>
+                    <span>{{ match.match_time }}</span>
                     <span class="{% if match.completed %}completed{% else %}not-completed{% endif %}">
                       {% if match.completed %}Completed{% else %}Not Completed{% endif %}
                     </span>

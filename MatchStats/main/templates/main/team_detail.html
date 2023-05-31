@@ -1,36 +1,80 @@
 {% extends 'main/base.html' %}
 
-{% block title%}Team Player Details{% endblock %}
+{% block title %}Player List{% endblock %}
 
-{% block content%}
+{% block content %}
 <style>
-   .players{
-        width: 100%;
-        background-color: rgb(173, 233, 214);
-        margin-bottom:2px;
-        font-size: large;
+    body {
+        background-color: #f2f6fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        overflow: visible;
+    }
+
+    .container {
+        margin-top: 30px;
+    }
+
+    .player-card {
+        background-color: #080049;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .player-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .player-name {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #b969a2;
         text-align: center;
-        list-style-type: none;
-        padding: 2px;;
-
-    }
-    
-   .change_color:hover{
-        background-color: rgb(250, 215, 244);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
+    .player-details {
+        font-size: 16px;
+        color: #ffffff;
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .player-details span {
+        display: block;
+        margin-bottom: 5px;
+    }
 </style>
-<head >
-    <title>{{ team.name }}</title>
-</head>
-<body style="text-align: center;">
-    <h1>{{ team.name }}</h1>
 
-    <h2>Players</h2>
-    <ul>
+<div class="container">
+    <h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 32px; color: #007ACC; margin-bottom: 30px;">Player List</h1>
+    <div class="row">
         {% for player in team.player_set.all %}
-        <li class="players"><a class="change_color" href="{% url 'main:player_detail' player.id %}" style="text-decoration: none; color: rgb(8, 8, 8);">{{ player.name }}</a></li>
+        <div class="col-md-4">
+            <a href="/player/{{ player.id }}" style="text-decoration: none;">
+                <div class="player-card">
+                    <div class="player-name">
+                        {{ player.name }}
+                    </div>
+                    <div class="player-details">
+                        <!-- <span><strong>Team:</strong> {{ player.team }}</span> -->
+                        {% if player.position == "G" %}
+            <p>Position: Goal Keeper</p>
+            {% elif player.position == "M" %}
+            <p>Position: Mid Fielder</p>
+            {% elif player.position == "F" %}
+            <p>Position: Forward</p>
+            {% else %}
+            <p>Position: Defender</p>
+            {% endif %}
+                    </div>
+                </div>
+            </a>
+        </div>
         {% endfor %}
-    </ul>
-</body>
-{%endblock%}
+    </div>
+</div>
+{% endblock %}
