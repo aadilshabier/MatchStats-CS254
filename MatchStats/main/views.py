@@ -9,6 +9,12 @@ class TeamsList(generic.ListView):
     model = Team
     template_name = 'main/team_list.html'
     context_object_name = "teams"
+    ordering = ["name"]
+
+class PointsTable(generic.ListView):
+    model = Team
+    template_name = 'main/points_table.html'
+    context_object_name = "teams"
     ordering = ["-points"]
 
 class TeamDetail(generic.DetailView):
