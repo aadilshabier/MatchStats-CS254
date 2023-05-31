@@ -39,3 +39,5 @@ class PlayerDetail(generic.DetailView):
 class PlayersList(generic.ListView):
     model = Player
     template_name = 'main/player_list.html'
+    context_object_name = "players"
+       

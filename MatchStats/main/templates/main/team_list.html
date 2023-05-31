@@ -3,6 +3,11 @@
 {% block title%}Teams{% endblock %}
 
 {% block content%}
+<style>
+   .change_color:hover{
+        background-color: rgb(39, 141, 48);
+    }
+</style>
 <h3>Table:</h3>
 <table class="table">
     <thead>
@@ -23,7 +28,7 @@
     {% for team in teams %}
     <tr>
         <th scope="row">{{ forloop.counter }}</th>
-        <td>{{ team.name }}</td>
+        <td><a class="change_color" href="{% url 'main:team_detail' team.id %}"  style="text-decoration: none; color: rgb(8, 8, 8);" >{{ team.name }}</a></td>
         <td>{{ team.played }}</td>
         <td>{{ team.wins }}</td>
         <td>{{ team.draws }}</td>
