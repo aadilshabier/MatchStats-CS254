@@ -3,35 +3,31 @@
 {% block title%}MatchStats{% endblock %}
 
 {% block content %}
-<style>
-    .players{
-        width: 100%;
-        background-color: aquamarine;
-        margin-bottom:2px;
-        font-size: large;
-        text-align: center;
-        list-style-type: none;
-        padding: 2px;;
-
-    }
-    .change_color:hover{
-        background-color: rgb(196, 238, 98);
-    }
-</style>
 
 
 
-<body>
-    <h1 style="text-align: center; background-color: rgb(235, 66, 99); margin: 0px;padding: 6px;">League Players</h1>
+{% load static %}
 
-    <div > 
-        <ul>
-        {% for player in players.all %}
-        <li class="players"> <a class="change_color" href="{% url 'main:player_detail' player.id %}" style="text-decoration: none; color: rgb(8, 8, 8);">{{ player.name }}</a> - {{ player.team }}
-        </li>
-       
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        .team-container {
+            background-color: #e9f2fd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+    <div class="container">
+        <h1>Team List</h1>
+        {% for team in teams %}
+            <div class="team-container">
+                <h2>{{ team.name }}</h2>
+                <ul>
+                    {% for player in team.player_set.all %}
+                        <li>{{ player.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
         {% endfor %}
-    </ul></div>
-   
-</body>
+    </div>
 {%endblock%}
