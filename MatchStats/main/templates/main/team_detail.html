@@ -1,6 +1,6 @@
 {% extends 'main/base.html' %}
 
-{% block title%}Team Player Details{% endblock %}
+{% block title%}{{ team.name }}{% endblock %}
 
 {% block content%}
 <style>
@@ -20,10 +20,7 @@
     }
 
 </style>
-<head >
-    <title>{{ team.name }}</title>
-</head>
-<body style="text-align: center;">
+<div class="text-center">
     <h1>{{ team.name }}</h1>
 
     <h2>Players</h2>
@@ -32,5 +29,5 @@
         <li class="players"><a class="change_color" href="{% url 'main:player_detail' player.id %}" style="text-decoration: none; color: rgb(8, 8, 8);">{{ player.name }}</a></li>
         {% endfor %}
     </ul>
-</body>
+</div>
 {%endblock%}
