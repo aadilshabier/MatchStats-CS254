@@ -1,36 +1,96 @@
 {% extends 'main/base.html' %}
+{% block title %}Match List{% endblock %}
 
-{% block title%}Teams{% endblock %}
+{% block content %}
+<style>
+    body {
+        background-color: #f2f6fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        overflow: visible;
+    }
 
-{% block content%}
-<table class="table">
-    <thead>
-      <tr class="text-center">
-        <th scope="col">#</th>
-        <th scope="col">Home</th>
-        <th scope="col"></th>
-        <th scope="col">vs</th>
-        <th scope="col"></th>
-        <th scope="col">Away</th>
-        <th scope="col">Date</th>
-        <th scope="col">Stadium</th>
-      </tr>
-    </thead>
-    <tbody>
-    {% for match in matches %}
-    <tr class="clickable text-center"
-    onclick='window.location="match/{{match.id}}"'>
-        <th scope="row">{{ forloop.counter }}</th>
-        <td>{{ match.team_1 }}</td>
-        <td>{{ match.score_1 }}</td>
-        <td></td>
-        <td>{{ match.score_2 }}</td>
-        <td>{{ match.team_2 }}</td>
-        <td>{{ match.match_time }}</td>
-        <td>{{ match.stadium }}</td>
-      </tr>
-    {% endfor %}
-    </tbody>
-  </table>
+    .container {
+        text-align: center;
+    }
 
+    h1 {
+        font-size: 4rem;
+        color: #0a0244;
+        margin-bottom: 30px;
+        padding: 10px;
+        display: inline-block;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        border-radius: 10px;
+        text-transform: uppercase;
+        letter-spacing: 20px;
+        text-align: center;
+    }
+
+    .match-card {
+        background-color: #1c3648;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease-in-out;
+        color: #ffffff;
+    }
+
+    .match-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .team-names {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .match-details {
+        display: flex;
+        justify-content: space-between;
+        font-size: 16px;
+    }
+
+    .completed {
+        color: #000000;
+        background-color: #28a745;
+        padding: 4px 8px;
+        border-radius: 4px;
+    }
+
+    .not-completed {
+        color: #ffffff;
+        background-color: #dc3545;
+        padding: 4px 8px;
+        border-radius: 4px;
+    }
+
+    .match-link {
+        text-decoration: none;
+    }
+</style>
+
+    <div class="container">
+        <h1>Matches</h1>
+        <div class="row">
+            {% for match in matches %}
+            <div class="col-md-6">
+              <a href="match/{{match.id}}" class="match-link">
+                <div class="match-card">
+                  <div class="team-names">
+                    {{ match.team_1 }} vs {{ match.team_2 }}
+                  </div>
+                  <div class="match-details">
+                    <span>Match Time: {{ match.match_time }}</span>
+                    <span class="{% if match.completed %}completed{% else %}not-completed{% endif %}">
+                      {% if match.completed %}Completed{% else %}Not Completed{% endif %}
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

@@ -1,9 +1,4 @@
-body{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
+
 #page-logo a {
     font-family: 'Shrikhand', cursive;
     /* font-size: 500; */
@@ -62,5 +57,4 @@ header nav a:hover {
     padding: 12px;
     text-decoration: none;
     border-radius: 5px;
-    overflow: auto;
 }
