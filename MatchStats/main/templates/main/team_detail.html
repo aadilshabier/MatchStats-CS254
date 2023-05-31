@@ -1,6 +1,6 @@
 {% extends 'main/base.html' %}
 
-{% block title %}Player List{% endblock %}
+{% block title%}{{ team.name }}{% endblock %}
 
 {% block content %}
 <style>
@@ -48,6 +48,8 @@
         margin-bottom: 5px;
     }
 </style>
+<div class="text-center">
+    <h1>{{ team.name }}</h1>
 
 <div class="container">
     <h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 32px; color: #007ACC; margin-bottom: 30px;">Player List</h1>
@@ -75,6 +77,6 @@
             </a>
         </div>
         {% endfor %}
-    </div>
+    </ul>
 </div>
-{% endblock %}
+{%endblock%}

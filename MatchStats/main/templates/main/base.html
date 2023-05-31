@@ -59,9 +59,17 @@
                         <a href="{% url 'main:player_list' %}" class="nav-link">Players</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin">Login</a>
+                        <a href="{% url 'main:transfer_list' %}" class="nav-link">Transfers</a>
                     </li>
-                    
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'user:logout' %}">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'user:login' %}">Login</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>

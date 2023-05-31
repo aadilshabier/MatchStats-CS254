@@ -1,24 +1,16 @@
 {% extends 'main/base.html' %}
 
-{% block title %}Player Detail{% endblock %}
+{% block title %}{{ player }}{% endblock %}
 
 {% block content %}
 <style>
-    body{
-        text-align: center;
-    }
     p{
         font-size: larger;
         background-color: rgb(255, 171, 196);
-        margin: 1.5px;
-       
-        
+        margin: 1.5px;       
     }
 </style>
-<head>
-    <title>{{ player.name }}</title>
-</head>
-<body>
+<div class="text-center">
     <h1>{{ player.name }}</h1>
 
     <p>Team: {{ player.team.name }}</p>
@@ -32,5 +24,5 @@
     <p>Country:{{player.nationality}}</p>
     <p>Height:{{player.height}}</p>
    
-</body>
+</div>
 {% endblock %}
