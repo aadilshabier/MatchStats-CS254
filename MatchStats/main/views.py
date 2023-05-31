@@ -1,11 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.views import generic
 
 from .models import Stadium, Player, Team, Match
 
-def index(request):
-    return render(request, "main/index.html")
+class IndexView(generic.TemplateView):
+    template_name = "main/index.html"
 
 class TeamsList(generic.ListView):
     model = Team
