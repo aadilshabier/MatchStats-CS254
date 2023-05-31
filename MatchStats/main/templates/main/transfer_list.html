@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+
+{% block title%}Transfers{% endblock %}
+
+{% block content%}
+<style>
+   .change_color:hover{
+        background-color: rgb(39, 141, 48);
+    }
+</style>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Player</th>
+        <th scope="col">To</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for transfer in transfers %}
+    <tr>
+        <td><a class="change_color" href="{% url 'main:transfer_detail' transfer.id %}"
+            style="text-decoration: none; color: rgb(8, 8, 8);" >
+            {{ transfer.player }}
+        </a></td>
+        <td>{{ transfer.team_to }}</td>
+        <td>{{ transfer.transfer_date }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

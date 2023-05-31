@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 
-from .models import Stadium, Player, Team, Match
+from .models import Stadium, Player, Team, Match, Transfer
 
 class IndexView(generic.TemplateView):
     template_name = "main/index.html"
@@ -39,4 +39,12 @@ class PlayersList(generic.ListView):
     model = Player
     template_name = 'main/player_list.html'
     context_object_name = "players"
-       
+
+class TransferList(generic.ListView):
+    model = Transfer
+    template_name = "main/transfer_list.html"
+    context_object_name = "transfers"
+
+class TransferDetail(generic.DetailView):
+    model = Transfer
+    template_name = "main/transfer_detail.html"

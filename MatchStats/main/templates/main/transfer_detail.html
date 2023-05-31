@@ -1,0 +1,31 @@
+{% extends 'main/base.html' %}
+
+{% block title%}{{ team.name }}{% endblock %}
+
+{% block content%}
+<style>
+   .players{
+        width: 100%;
+        background-color: rgb(173, 233, 214);
+        margin-bottom:2px;
+        font-size: large;
+        text-align: center;
+        list-style-type: none;
+        padding: 2px;;
+
+    }
+    
+   .change_color:hover{
+        background-color: rgb(250, 215, 244);
+    }
+
+</style>
+<div class="text-center">
+    <h1>{{ transfer.player }}</h1>
+    <div class="fs-3">
+        <p>{{ transfer.team_from }} -> {{ transfer.team_to }}</p>
+        <p>Price: ${{ transfer.price }}</p>
+        <p>Date: ${{ transfer.transfer_date }}</p>
+    </div>    
+</div>
+{%endblock%}
