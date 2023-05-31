@@ -1,14 +1,17 @@
 {% extends 'main/base.html' %}
-
+{% load static %}
 {% block title%}MatchStats{% endblock %}
 
 {% block content %}
-<div class="mx-auto p-5">
-<p>Welcome to MatchStats!</p>
-<p>
-    This is the app for all the footbal statistics nerd out there to analyze data
-    to your hearts content.
-</p>
-<img src="/static/img/football-statistics.jpg" alt="Football statistics representation" width="800">
-</div>
+<link href="{%static 'home.css' %}" rel="stylesheet">
+<main>
+    
+    <!-- <link href="{%static 'home.css' %}" rel="stylesheet">         -->
+    <p><b>Welcome to MatchStats!</b></p>
+    <!-- <p>
+        This is the app for all the football statistics nerd out there to analyze data
+        to your hearts content.
+    </p> -->
+    <!-- <img src="/static/img/ball.webp" alt="Football statistics representation" width="800"> -->
+</main>
 {% endblock %}
