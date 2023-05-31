@@ -6,7 +6,7 @@
 <h3>Table:</h3>
 <table class="table">
     <thead>
-      <tr>
+      <tr class="text-center">
         <th scope="col">#</th>
         <th scope="col">Home</th>
         <th scope="col"></th>
@@ -19,7 +19,8 @@
     </thead>
     <tbody>
     {% for match in matches %}
-    <tr>
+    <tr class="clickable text-center"
+    onclick='window.location="match/{{match.id}}"'>
         <th scope="row">{{ forloop.counter }}</th>
         <td>{{ match.team_1 }}</td>
         <td>{{ match.score_1 }}</td>

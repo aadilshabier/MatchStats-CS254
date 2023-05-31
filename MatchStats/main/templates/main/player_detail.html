@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Player Detail{% endblock %}
+
+{% block content %}
+<style>
+    body{
+        text-align: center;
+    }
+    p{
+        font-size: larger;
+        background-color: rgb(255, 171, 196);
+        margin: 1.5px;
+       
+        
+    }
+</style>
+<head>
+    <title>{{ player.name }}</title>
+</head>
+<body>
+    <h1>{{ player.name }}</h1>
+
+    <p>Team: {{ player.team.name }}</p>
+    <p>Jersey no:{{player.jersey_no}}</p>
+    <p>Position: {{ player.position }}</p>
+    <p>DOB:{{player.dob}}</p>
+    <p>Goals_scored:{{player.goals}}</p>
+    <p>No_of_Assists:{{player.assists}}</p>
+    <p>Yellow_cards:{{player.yellow_cards}}</p>
+    <p>Red_cards:{{player.red_cards}}</p>
+    <p>Country:{{player.nationality}}</p>
+    <p>Height:{{player.height}}</p>
+   
+</body>
+{% endblock %}

@@ -49,7 +49,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'main:team_list' %}">Table</a>
+                        <a class="nav-link" href="{% url 'main:team_list' %}">Teams</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'main:stadium_list' %}">Stadiums</a>
@@ -58,8 +58,12 @@
                         <a class="nav-link" href="{% url 'main:match_list' %}">Matches</a>
                     </li>
                     <li class="nav-item">
+                        <a href="{% url 'main:player_list' %}" class="nav-link">Players</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/admin">Login</a>
                     </li>
+                    
                 </ul>
             </div>
         </div>

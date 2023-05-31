@@ -62,3 +62,39 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+{% block content%}
+<p>Date and Time: {{ object.match_time }}</p>
+<p>Stadium: {{ object.stadium }}</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">{{ object.team_1 }}</th>
+        <th scope="col">{{ object.team_2 }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Goals</th>
+        <th scope="col">{{ object.score_1 }}</th>
+        <th scope="col">{{ object.score_2 }}</th>
+      </tr>
+      <tr>
+        <th scope="row">Shots</th>
+        <th scope="col">{{ object.shots_1 }}</th>
+        <th scope="col">{{ object.shots_2 }}</th>
+      </tr>
+      <tr>
+        <th scope="row">Offsides</th>
+        <th scope="col">{{ object.offsides_1 }}</th>
+        <th scope="col">{{ object.offsides_2 }}</th>
+      </tr>
+      <tr>
+        <th scope="row">Corners</th>
+        <th scope="col">{{ object.corners_1 }}</th>
+        <th scope="col">{{ object.corners_2 }}</th>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}
