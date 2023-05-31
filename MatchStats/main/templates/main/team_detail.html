@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+
+{% block title%}Team Player Details{% endblock %}
+
+{% block content%}
+<style>
+   .players{
+        width: 100%;
+        background-color: rgb(173, 233, 214);
+        margin-bottom:2px;
+        font-size: large;
+        text-align: center;
+        list-style-type: none;
+        padding: 2px;;
+
+    }
+    
+   .change_color:hover{
+        background-color: rgb(250, 215, 244);
+    }
+
+</style>
+<head >
+    <title>{{ team.name }}</title>
+</head>
+<body style="text-align: center;">
+    <h1>{{ team.name }}</h1>
+
+    <h2>Players</h2>
+    <ul>
+        {% for player in team.player_set.all %}
+        <li class="players"><a class="change_color" href="{% url 'main:player_detail' player.id %}" style="text-decoration: none; color: rgb(8, 8, 8);">{{ player.name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+{%endblock%}
