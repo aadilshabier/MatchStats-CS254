@@ -48,3 +48,23 @@ class TransferList(generic.ListView):
 class TransferDetail(generic.DetailView):
     model = Transfer
     template_name = "main/transfer_detail.html"
+
+class TeamUpdateView(generic.UpdateView):
+    model=Team
+    fields = '__all__'
+    template_name = 'main/team_update.html'
+    success_url = reverse_lazy('team/<int:pk>/')
+
+
+class PlayerUpdateView(generic.UpdateView):
+    model = Player
+    fields = '__all__'
+    template_name = 'main/player_update.html'
+    success_url = reverse_lazy('player/<int:pk>/')
+
+class MatchUpdateView(generic.UpdateView):
+    model = Match
+    fields = '__all__'
+    template_name = 'main/match_update.html'
+    success_url = reverse_lazy('match/<int:pk>/')
+   
