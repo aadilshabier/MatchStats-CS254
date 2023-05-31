@@ -13,4 +13,5 @@ urlpatterns = [
     path("stadiums", views.StadiumList.as_view(), name="stadium_list"),
     path('player/<int:pk>/', views.PlayerDetail.as_view(), name='player_detail'),
     path('players',views.PlayersList.as_view(),name="player_list"),
+    # path('update_team/<int:pk>',views.UpdateTeam, name ="update_team"),
 ]
