@@ -76,7 +76,7 @@
         <div class="row">
             {% for match in matches %}
             <div class="col-md-6">
-              <a href="match/{{match.id}}" class="match-link">
+              <a href="{% url 'main:match_detail' match.id %}" class="match-link">
                 <div class="match-card">
                   <div class="team-names">
                     {{ match.team_1 }} vs {{ match.team_2 }}

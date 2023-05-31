@@ -4,13 +4,10 @@
 
 {% block content %}
 <style>
-    body {
+    .container {
         background-color: #f2f6fa;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         overflow: visible;
-    }
-
-    .container {
         margin-top: 30px;
     }
 
@@ -54,7 +51,7 @@
     <div class="row">
         {% for player in players %}
         <div class="col-md-4">
-            <a href="/player/{{ player.id }}" style="text-decoration: none;">
+            <a href="{% url 'main:player_detail' player.id %}" style="text-decoration: none;">
                 <div class="player-card">
                     <div class="player-name">
                         {{ player.name }}
@@ -62,14 +59,14 @@
                     <div class="player-details">
                         <span><strong>Team:</strong> {{ player.team }}</span>
                         {% if player.position == "G" %}
-            <p>Position: Goal Keeper</p>
-            {% elif player.position == "M" %}
-            <p>Position: Mid Fielder</p>
-            {% elif player.position == "F" %}
-            <p>Position: Forward</p>
-            {% else %}
-            <p>Position: Defender</p>
-            {% endif %}
+                        <p>Position: Goal Keeper</p>
+                        {% elif player.position == "M" %}
+                        <p>Position: Mid Fielder</p>
+                        {% elif player.position == "F" %}
+                        <p>Position: Forward</p>
+                        {% else %}
+                        <p>Position: Defender</p>
+                        {% endif %}
                     </div>
                 </div>
             </a>
