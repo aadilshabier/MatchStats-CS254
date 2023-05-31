@@ -79,7 +79,7 @@
               <a href="{% url 'main:match_detail' match.id %}" class="match-link">
                 <div class="match-card">
                   <div class="team-names">
-                    {{ match.team_1 }} vs {{ match.team_2 }}
+                    {{ match.team_1.code }} {{ match.score_1 }} - {{ match.score_2 }} {{ match.team_2.code }}
                   </div>
                   <div class="match-details">
                     <span>{{ match.match_time }}</span>
