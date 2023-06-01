@@ -1,28 +1,141 @@
 {% extends 'main/base.html' %}
-
-{% block title %}{{ player }}{% endblock %}
+{load static}
+{% block title %}Player Detail{% endblock %}
 
 {% block content %}
 <style>
-    p{
-        font-size: larger;
-        background-color: rgb(255, 171, 196);
-        margin: 1.5px;       
-    }
-</style>
-<div class="text-center">
-    <h1>{{ player.name }}</h1>
 
-    <p>Team: {{ player.team.name }}</p>
-    <p>Jersey no:{{player.jersey_no}}</p>
-    <p>Position: {{ player.position }}</p>
-    <p>DOB:{{player.dob}}</p>
-    <p>Goals_scored:{{player.goals}}</p>
-    <p>No_of_Assists:{{player.assists}}</p>
-    <p>Yellow_cards:{{player.yellow_cards}}</p>
-    <p>Red_cards:{{player.red_cards}}</p>
-    <p>Country:{{player.nationality}}</p>
-    <p>Height:{{player.height}}</p>
+  
+  body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    overflow: visible;
+    
+  }
+  
+  h1 {
+    /* font-size: 32px; */
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    grid-gap: 20px;
+  }
+  
+  .name-box {
+    background-image: linear-gradient(to right, red, yellow, rgb(61, 243, 61));
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .details-box {
+    background-color: #fff;
+    color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .details-box h4 {
+    margin-bottom: 20px;
+  }
+  
+  .red-card-box {
+    background-color: rgba(248, 1, 1, 0.685);
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
    
+  }
+  
+  .yellow-card-box {
+    background-color: yellow;
+    color: #000;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .cards {
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .cards h4 {
+    margin-right: 10px;
+  }
+  
+  .cards .red-card-box,
+  .cards .yellow-card-box {
+    margin: 0 10px;
+    width: 60px;
+  }
+</style>
+
+<div class="container text-center mt-3 pt-3"
+style="background-color: rgb(156, 175, 228);  border-radius: 10px;">
+    <h1 class="display-4" style="display: inline-block; color: rgb(4, 4, 61); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;">{{ player.name }}</h1>
 </div>
+
+<body>
+    <!-- <div class="grid-container">
+        <div class="name-box">
+            <h1><strong>{{ player.name }}</strong></h1>
+        </div>
+         -->
+         <div class="container text-center my-5" >
+         
+         <h1 style="font-family: Georgia, 'Times New Roman', Times, serif; color: rgb(35, 5, 66);">{{ player.team.name }}</h1>
+            <hr>
+        <h4>Jersey No:{{player.jersey_no}}</h4> 
+        <hr>   
+        {% if player.position == "G" %}
+        <h4>Position: Goal Keeper</h4>
+        {% elif player.position == "M" %}
+        <h4>Position: Mid Fielder</h4>
+        {% elif player.position == "F" %}
+        <h4>Position: Forward</h4>
+        {% else %}
+        <h4>Position: Defender</h4>
+        {% endif %}
+        <hr>
+        <h4>Goals Scored: {{ player.goals }}</h4>
+        <hr>
+        <h4>Assists Given : {{ player.assists }}</h4>
+        <hr>
+        <h4>Country: {{ player.nationality }}</h4>
+        <hr>
+        <h4>DOB: {{ player.dob }}</h4>
+        <hr>
+        <h4>Height: {{ player.height }} cm</h4>
+        <hr>
+            <div class="cards row d-flex justify-content-center items-center" style="display: block ;width: 100%" align="center">
+                <div class="yellow-card-box my-3" style="width:60px">
+                    <h6>{{ player.yellow_cards }}</h6>
+                </div>
+                <div class="red-card-box my-3">
+                    <h6> {{ player.red_cards }}</h6>
+                </div>
+            </div>
+        <hr>
+    </div>
+</div>
+</body>
+
 {% endblock %}
