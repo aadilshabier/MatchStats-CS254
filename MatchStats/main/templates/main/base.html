@@ -61,9 +61,12 @@
                     <li class="nav-item">
                         <a href="{% url 'main:transfer_list' %}" class="nav-link">Transfers</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{% url 'main:points_table' %}" class="nav-link">Points Table</a>
+                    </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'user:logout' %}">Logout</a>
+                        <a class="nav-link" href="{% url 'user:logout' %}">{{ user }}</a>
                     </li>
                     {% else %}
                     <li class="nav-item">

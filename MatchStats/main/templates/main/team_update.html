@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Update Team{% endblock %}
+
+
+{% block content %}
+<style>
+    form{
+        width: 50%;
+        align-items: center;
+        margin-left: 25%;
+    }
+</style>
+<header>
+    <h1 class="display-1" style="width: 100%;">Update Team</h1>
+</header>
+<br>
+<form method="post" action="{% url 'main:team_update' team.id %}" >
+    {% csrf_token %}
+    {{form.as_p}}
+    
+    <input type="submit" value="Update"  class="btn btn-primary"> 
+    <button type="reset" class="btn btn-danger"> Reset </button>
+    <a href="{% url 'main:team_detail' team.id %}" class="btn btn-primary"> Cancel </a>
+
+</form>
+{% endblock %}

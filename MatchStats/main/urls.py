@@ -16,4 +16,8 @@ urlpatterns = [
     path("stadiums/", views.StadiumList.as_view(), name="stadium_list"),
     path('players/',views.PlayersList.as_view(),name="player_list"),
     path('transfers/', views.TransferList.as_view(), name="transfer_list"),
+    path('player/<int:pk>/update/',views.PlayerUpdateView.as_view(), name="player_update"),
+    path('team/<int:pk>/update/',views.TeamUpdateView.as_view(), name="team_update"),
+    path('match/<int:pk>/update',views.MatchUpdateView.as_view(), name="match_update"),
+    path('table/',views.PointsTable.as_view(), name="points_table"),
 ]
