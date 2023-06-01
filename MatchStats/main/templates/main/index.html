@@ -1,17 +1,71 @@
 {% extends 'main/base.html' %}
 {% load static %}
-{% block title%}MatchStats{% endblock %}
+
+{% block title %}MatchStats{% endblock %}
 
 {% block content %}
-<link href="{%static 'home.css' %}" rel="stylesheet">
+<style>
+  body, html {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+
+  #intro {
+    background-image: url("../../static/img/ball.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+  }
+
+  .mask {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px; 
+  }
+
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px;
+    transition: background-color 0.3s, text-decoration 0.3s;
+  }
+
+  .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    text-decoration: underline;
+    border-radius: 10px; 
+  }
+  #text {
+    width: 70vw;
+    height: 60vh;
+    margin: 0 auto;
+  }
+  .title{
+    text-transform: uppercase;
+    letter-spacing: 1rem;
+    font-size: 5rem;
+  }
+
+</style>
+<link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
 <main>
-    
-    <!-- <link href="{%static 'home.css' %}" rel="stylesheet">         -->
-    <p><b>Welcome to MatchStats!</b></p>
-    <!-- <p>
-        This is the app for all the football statistics nerd out there to analyze data
-        to your hearts content.
-    </p> -->
-    <!-- <img src="/static/img/ball.webp" alt="Football statistics representation" width="800"> -->
+  <div id="intro" class="bg-image shadow-2-strong ">
+    <div class="mask">
+      <div  id='text'class="container-fluid d-flex flex-column items-center justify-content-center ">
+            <div class="text-white text-center ">
+              <h1 class="mb-3 title">MatchStats</h1>
+              
+              <a class="btn btn-primary text-white" href="{% url 'user:login' %}" role="button"
+                rel="nofollow">Login</a>
+                
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
 {% endblock %}

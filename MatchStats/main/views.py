@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
 from django.urls import reverse_lazy
 from .models import Stadium, Player, Team, Match, Transfer
@@ -9,6 +9,12 @@ class IndexView(generic.TemplateView):
 class TeamsList(generic.ListView):
     model = Team
     template_name = 'main/team_list.html'
+    context_object_name = "teams"
+    ordering = ["name"]
+
+class PointsTable(generic.ListView):
+    model = Team
+    template_name = 'main/points_table.html'
     context_object_name = "teams"
     ordering = ["-points"]
 
@@ -66,5 +72,5 @@ class MatchUpdateView(generic.UpdateView):
     model = Match
     fields = '__all__'
     template_name = 'main/match_update.html'
-    success_url = reverse_lazy('main:match_detail')
+    success_url = reverse_lazy('match/<int:pk>/')
    
