@@ -1,5 +1,6 @@
-from django.urls import reverse_lazy
+from django.urls import reverse
 from django.views import generic
+from django.urls import reverse_lazy
 from .models import Stadium, Player, Team, Match, Transfer
 
 class IndexView(generic.TemplateView):
@@ -58,18 +59,23 @@ class TeamUpdateView(generic.UpdateView):
     model=Team
     fields = '__all__'
     template_name = 'main/team_update.html'
-    success_url = reverse_lazy('team/<int:pk>/')
-
+    def get_success_url(self):
+        return reverse('main:team_detail', kwargs={'pk' : self.object.pk})
+      
 
 class PlayerUpdateView(generic.UpdateView):
     model = Player
-    fields = '__all__'
+    fields = ['name','team','jersey_no','dob','position','goals','assists','yellow_cards','red_cards','nationality','height']
     template_name = 'main/player_update.html'
-    success_url = reverse_lazy('player/<int:pk>/')
+    def get_success_url(self):
+        return reverse('main:player_detail', kwargs={'pk' : self.object.pk})
+      
 
 class MatchUpdateView(generic.UpdateView):
     model = Match
     fields = '__all__'
     template_name = 'main/match_update.html'
-    success_url = reverse_lazy('match/<int:pk>/')
+    def get_success_url(self):
+        return reverse('main:match_detail', kwargs={'pk' : self.object.pk})
+      
    

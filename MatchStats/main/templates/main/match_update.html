@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Update Match{% endblock %}
+
+
+{% block content %}
+<style>
+    form{
+        width: 50%;
+        align-items: center;
+        margin-left: 25%;
+    }
+</style>
+<header>
+    <h1 class="display-1" style="width: 100%;">Update Match</h1>
+</header>
+<br>
+<form method="post" action="{% url 'main:match_update' match.id %}" >
+    {% csrf_token %}
+    {{form.as_p}}
+    
+    <input type="submit" value="Update"  class="btn btn-primary"> 
+    <button type="reset" class="btn btn-danger"> Reset </button>
+    <a href="{% url 'main:match_detail' match.id %}" class="btn btn-primary"> Cancel </a>
+
+</form>
+{% endblock %}

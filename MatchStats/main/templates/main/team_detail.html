@@ -71,12 +71,13 @@
             <p>Position: Forward</p>
             {% else %}
             <p>Position: Defender</p>
-            {% endif %}
+            {% endif %}
                     </div>
                 </div>
             </a>
         </div>
         {% endfor %}
     </ul>
+    <div align="right"><button class = "btn btn-primary"><a href="{% url 'main:team_update' team.id %}" style = "color: aliceblue;text-decoration: none;">Edit</a></button></div>
 </div>
 {%endblock%}
