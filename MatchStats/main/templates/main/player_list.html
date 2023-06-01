@@ -4,6 +4,13 @@
 
 {% block content %}
 <style>
+    body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    overflow: visible;
+    
+  }
+  
     .container {
         background-color: #f2f6fa;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -12,7 +19,7 @@
     }
     h1 {
         font-size: 4rem;
-        color: #0a0244;
+        color: #007ACC;
         margin-bottom: 30px;
         padding: 10px;
         display: inline-block;
@@ -60,7 +67,7 @@
 </style>
 
 <div class="container">
-    <h1 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 32px; color: #007ACC; margin-bottom: 30px;">Player List</h1>
+    <h1    >PLAYERS</h1>
     <div class="row">
         {% for player in players %}
         <div class="col-md-4">
