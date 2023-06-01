@@ -1,7 +1,8 @@
 from django.urls import reverse
 from django.views import generic
 from django.urls import reverse_lazy
-from .models import Stadium, Player, Team, Match, Transfer
+from .models import Stadium, Player, Team, Match, Transfer, Staff
+from django.contrib.auth.models import User
 
 class IndexView(generic.TemplateView):
     template_name = "main/index.html"
@@ -45,11 +46,29 @@ class PlayersList(generic.ListView):
     model = Player
     template_name = 'main/player_list.html'
     context_object_name = "players"
+    ordering = ['name']
 
 class TransferList(generic.ListView):
     model = Transfer
     template_name = "main/transfer_list.html"
     context_object_name = "transfers"
+    ordering = ['-transfer_date']
+
+class TransferFilteredList(generic.ListView):
+    model = Transfer
+    template_name = "main/transfer_list.html"
+    context_object_name = "transfers"
+    ordering = ['-transfer_date']
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        user  = User.objects.get(pk=self.kwargs['user_id'])
+        if user.username == 'admin':
+            return qs
+        elif not Staff.objects.filter(user_id=user):
+            return None
+        team = user.staff.team_id
+        return qs.filter(team_from=team) | qs.filter(team_to=team)
 
 class TransferDetail(generic.DetailView):
     model = Transfer

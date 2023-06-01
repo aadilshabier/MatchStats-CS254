@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+
+{% block title%}{{ user }}{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-header">Navigation</div>
+        <div class="list-group list-group-flush">
+            {% if user.is_authenticated %}
+            <a href="{% url 'main:transfer_list' user.id %}" class="list-group-item list-group-item-action">Transfer</a>
+            {% endif %}
+            <a href="{% url 'user:logout' %}" class="list-group-item list-group-item-action">Logout</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="card">
+        <div class="card-header">Dashboard</div>
+        <div class="card-body">
+          <h5 class="card-title">Welcome {{ user }}!</h5>
+          <p class="card-text">This is the main content of your user dashboard.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

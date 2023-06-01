@@ -8,8 +8,11 @@
         background-color: rgb(39, 141, 48);
     }
 </style>
-<table class="table">
-    <thead>
+{% if not transfers %}
+<h2 class="display-5">No transfers to show!</h2>
+{% else %}
+<table class="table container my-5">
+    <thead style="background-color: rgba(30, 30, 150, 0.788); color: white;">
       <tr>
         <th scope="col">Player</th>
         <th scope="col">To</th>
@@ -29,4 +32,5 @@
     {% endfor %}
   </tbody>
 </table>
+{% endif %}
 {% endblock %}

@@ -69,7 +69,7 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'user:logout' %}">{{ user }}</a>
+                        <a class="nav-link" href="{% url 'user:account' %}">{{ user }}</a>
                     </li>
                     {% else %}
                     <li class="nav-item">

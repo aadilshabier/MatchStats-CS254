@@ -7,10 +7,11 @@ from .apps import UserConfig
 app_name = UserConfig.name
 
 urlpatterns = [
+    path('', views.AccountView.as_view(), name='account'),
     path("login/",
         auth_views.LoginView.as_view(template_name="user/login.html", next_page="main:index"),
         name="login"),
     path("logout/",
         auth_views.LogoutView.as_view(next_page="main:index"),
-        name="logout"),
+        name='logout'),
 ]
