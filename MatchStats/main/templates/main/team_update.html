@@ -1,0 +1,79 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Update Team{% endblock %}
+
+{% block content %}
+<style>
+    body{
+        width: 100vw;
+        box-sizing: border-box;
+        align-items: center;
+        align-content: center;
+    }
+    form{
+        margin:0px;
+        max-width: 100vh;
+        width: 50%;
+        box-sizing: border-box;
+        margin-left: 20%;
+
+    }
+</style>
+<header>
+    <h1 class="display-1" style="width: 100%;">Update Team</h1>
+</header>
+<br>
+<form method="post" action ="{% url 'main:team_update' team.id%}">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="team_name" class="form-label">Name</label>
+        <input type="text" class="form-control" name="name" id="team.name" placeholder="{{team.name}}" value = "{{team.name}}">
+    </div>
+    <div class="mb-3">
+        <label for="team_code" class="form-label">Code</label>
+        <input type="text" class="form-control" name="code" id="team.code" placeholder="{{team.code}}" value = "{{team.code}}">
+    </div>
+    <div class="mb-3">
+        <label for="team_stadium" class="form-label">Stadium</label>
+        <input type="text" class="form-control" name="stadium" id="team_stadium" placeholder="{{team.stadium}}" value = "{{team.stadium}}">
+    </div>
+    <div class="col mb-3">
+        <label for="team_played" class="form-label">No. of matches played</label>
+        <input type="number" class="form-control" name="played" id="team_played" placeholder="{{team.played}}" value = "{{team.played}}">
+    </div>
+    <div class="row">
+    <div class="col ">
+        <label for="team_won" class="form-label">No. of matches won</label>
+        <input type="number" class="form-control" name="wins" id="team_won" placeholder="{{team.won}}" value = "{{team.won}}">
+    </div>
+    <div class="col ">
+        <label for="team_draw" class="form-label">No. of matches drawed</label>
+        <input type="number" class="form-control" name="draws" id="team_draw" placeholder="{{team.draw}}" value = "{{team.draw}}">
+    </div>
+    
+    <div class="col ">
+        <label for="team_lost" class="form-label">No. of matches lost</label>
+        <input type="number" class="form-control" name="losses" id="team_lost" placeholder="{{team.lost}}" value = "{{team.lost}}">
+    </div>
+    </div>
+    <div class="row">
+    <div class="col">
+        <label for="team_for" class="form-label">No. of goals for</label>
+        <input type="number" class="form-control" name="goals_for" id="team_for" placeholder="{{team.goals_for}}" value = "{{team.goals_for}}">
+    </div>
+    <div class="col">
+        <label for="team_against" class="form-label">No. of goals against</label>
+        <input type="number" class="form-control" name="goals_against" id="team_against" placeholder="{{team.goals_against}}" value = "{{team.goals_against}}">
+    </div>
+    </div>
+    <div class="mb-3">
+        <label for="team_points" class="form-label">No. of points</label>
+        <input type="number" class="form-control" name="points"  id="team_points" placeholder="{{team.points}}" value = "{{team.points}}">
+    </div>
+    
+    <button type="submit" class="btn btn-primary col"> Update </button>
+    <button type="reset" class="btn btn-danger col"> Reset </button>
+    <a href="{% url 'main:team_detail' team.id %}" class="btn btn-primary col"> Cancel </a>
+
+</form>
+{% endblock %}

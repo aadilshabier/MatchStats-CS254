@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
-
+from django.urls import reverse_lazy
 from .models import Stadium, Player, Team, Match, Transfer
 
 class IndexView(generic.TemplateView):
@@ -53,18 +53,18 @@ class TeamUpdateView(generic.UpdateView):
     model=Team
     fields = '__all__'
     template_name = 'main/team_update.html'
-    success_url = reverse_lazy('team/<int:pk>/')
+    success_url = reverse_lazy('main:team_detail')
 
 
 class PlayerUpdateView(generic.UpdateView):
     model = Player
     fields = '__all__'
     template_name = 'main/player_update.html'
-    success_url = reverse_lazy('player/<int:pk>/')
+    success_url = reverse_lazy('main:player_detail', kwargs={'pk': Player.pk})
 
 class MatchUpdateView(generic.UpdateView):
     model = Match
     fields = '__all__'
     template_name = 'main/match_update.html'
-    success_url = reverse_lazy('match/<int:pk>/')
+    success_url = reverse_lazy('main:match_detail')
    
