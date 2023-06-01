@@ -1,90 +1,27 @@
 {% extends 'main/base.html' %}
 {% load static %}
-{% block title %}Update Team{% endblock %}
+{% block title %}Update Match{% endblock %}
+
 
 {% block content %}
 <style>
-    body{
-        width: 100vw;
-        box-sizing: border-box;
-        align-items: center;
-        align-content: center;
-    }
     form{
-        margin:0px;
-        max-width: 100vh;
         width: 50%;
-        box-sizing: border-box;
-        margin-left: 20%;
-
+        align-items: center;
+        margin-left: 25%;
     }
 </style>
 <header>
-    <h1 class="display-1" style="width: 100%;">Update Player</h1>
+    <h1 class="display-1" style="width: 100%;">Update Match</h1>
 </header>
 <br>
-<form method="post">
+<form method="post" action="{% url 'main:match_update' match.id %}" >
     {% csrf_token %}
-    <div class="mb-3">
-        <label for="player_name" class="form-label">Name</label>
-        <input type="text" class="form-control" name="player.name" id="player_name" placeholder="{{player.name}}" value = "{{player.name}}">
-    </div>
-    <div class="mb-3">
-        <label for="player_team" class="form-label">Team</label>
-        <input type="text" class="form-control" name="player.team" id="player.team" placeholder="{{player.team}}" value = "{{player.team}}">
-    </div>
-    <div class="col mb-3">
-        <label for="player_jerser_no" class="form-label">Jersey Number</label>
-        <input type="number" class="form-control" name="player.jersey_no" id="player.jersey_no" placeholder="{{player.jersey_no}}" value = "{{player.jersey_no}}">
-    </div>
-    <div class="col mb-3">
-
-        <label for="player_dob" class="form-label">Date of Birth</label>
-        <input type="date" class="form-control" name="player.dob" id="player_dob" placeholder="{{player.dob|date:'Y-m-d'}}" value = "{{player.dob|date:'Y-m-d'}}">
-    </div>
-    <div class="col mb-3">
-        <label for="player_position" class="form-label">Position</label>
-        <select class="form-control" name="player.position" id="player_position" placeholder="{{player.position}}" value = "{{player.position}}">
-            <option value="G">Goalkeeper</option>
-            <option value="D">Defender</option>
-            <option value="M">Midfielder</option>
-            <option value="F">Forward</option>
-        </select>
-    </div>
-
-    <div class="row">
-    <div class="col ">
-        <label for="player_goals" class="form-label">No. of goals scored</label>
-        <input type="number" class="form-control" name="player.goals" id="player_goals" placeholder="{{player.goals}}" value = "{{player.goals}}">
-    </div>
-    <div class="col ">
-        <label for="player_assists" class="form-label">No. of assists</label>
-        <input type="number" class="form-control" name="player.assists" id="player_assists" placeholder="{{player.assists}}" value = "{{player.assists}}">
-    </div>
-    </div>
-    <div class="row"> 
-    <div class="col ">
-        <label for="player_yellow_cards" class="form-label">No. of yellow cards</label>
-        <input type="number" class="form-control" name="player.yellow_cards" id="player_yellow_cards" placeholder="{{player.yellow_cards}}" value = "{{player.yellow_cards}}">
-    </div>
+    {{form.as_p}}
     
-    <div class="col">
-        <label for="player_red_cards" class="form-label">No. of red cards</label>
-        <input type="number" class="form-control" name="player.red_cards" id="player_red_cards" placeholder="{{player.red_cards}}" value = "{{player.red_cards}}">
-    </div>
-    </div>
-    <div class="mb-3">
-        <label for="player_nationality" class="form-label">Nationality</label>
-        <input type="text" class="form-control" name="player.nationality" id="player_nationality" placeholder="{{player.nationality}}" value = "{{player.nationality}}">
-    </div>
-    <div class="col">
-        <label for="player_height" class="form-label">Height</label>
-        <input type="number" class="form-control" name="player.height" id="player_height" placeholder="{{player.height}}" value = "{{player.height}}">
-    </div>
-    <br>
-    <button type="submit" class="btn btn-primary col"> Update </button>
-    <button type="reset" class="btn btn-danger col"> Reset </button>
-    <a href="{% url 'main:player_detail' player.id %}" class="btn btn-primary col"> Cancel </a>
+    <input type="submit" value="Update"  class="btn btn-primary"> 
+    <button type="reset" class="btn btn-danger"> Reset </button>
+    <a href="{% url 'main:match_detail' match.id %}" class="btn btn-primary"> Cancel </a>
 
 </form>
 {% endblock %}
